@@ -3,86 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Vitaly</title>
+  <meta name="description" content="Studio Vitaly: salão de beleza de alto padrão em São Paulo. Agende seu horário no WhatsApp.">
+  <title>Studio Vitaly | Salão de Beleza Luxo & Elegância</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-
+  <link rel="icon" type="image/png" href="img/favicon.png" sizes="1000x1000">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <meta name="theme-color" content="#0b0b0d">
 </head>
 <body>
+  <a class="mobile-whatsapp" href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">💬 Agendar no WhatsApp</a>
 
-  <!-- HERO -->
-  <section class="hero">
+  <header class="hero" id="inicio">
     <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Mais do que um salão, um refúgio de beleza e bem-estar</h1>
-      <p>Atendimento profissional com toque humanizado. Você merece se sentir linda por dentro e por fora.</p>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-whatsapp">Agendar pelo WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- RESULTADOS -->
-  <section class="results">
-    <h2>Resultados Reais</h2>
-    <div class="results-grid">
-      <img src="img/resultado1.jpg">
-      <img src="img/resultado2.jpg">
-      <img src="img/resultado3.jpg">
-    </div>
-  </section>
-
-  <!-- SERVIÇOS -->
-  <section class="services">
-    <h2>Nossos Serviços</h2>
-
-    <div class="service-card">
-      <img src="img/corte.jpg">
-      <div>
-        <h3>Corte Feminino</h3>
-        <p>Cortes personalizados que valorizam seu estilo.</p>
-        <a href="https://wa.me/55SEUNUMERO">Agendar</a>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="kicker">Studio Vitaly • Salão de Beleza</p>
+        <h1>Mais do que um salão, um refúgio de beleza e bem-estar.</h1>
+        <p class="subtitle">
+          Ambiente sofisticado, atendimento humanizado e resultados impecáveis para você sair ainda mais confiante.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-whatsapp" href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Agendar agora</a>
+          <a class="btn btn-outline" href="#servicos">Ver serviços</a>
+        </div>
+        <ul class="proof-list">
+          <li>★ 4 mil+ seguidores no Instagram</li>
+          <li>★ Atendimento de terça a sábado</li>
+          <li>★ Rua Felix Pereira da Rocha, 107</li>
+        </ul>
       </div>
-    </div>
 
-    <div class="service-card">
-      <img src="img/escova.jpg">
-      <div>
-        <h3>Escova & Finalização</h3>
-        <p>Brilho, leveza e durabilidade.</p>
-        <a href="https://wa.me/55SEUNUMERO">Agendar</a>
+      <aside class="offer-card">
+        <p class="offer-kicker">Oferta de primeira visita</p>
+        <h2>10% OFF</h2>
+        <p>para novas clientes em serviços selecionados.</p>
+        <a class="btn btn-whatsapp full" href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Quero meu desconto</a>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="servicos">
+      <div class="container">
+        <h2 class="section-title">Serviços em destaque</h2>
+        <p class="section-text">Tratamentos e técnicas que valorizam sua beleza com acabamento elegante e duradouro.</p>
+
+        <div class="service-grid">
+          <article class="card">
+            <h3>Cortes Femininos</h3>
+            <p>Design personalizado para harmonizar com seu estilo e formato de rosto.</p>
+            <a href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Agendar</a>
+          </article>
+
+          <article class="card">
+            <h3>Morena Iluminada & Loiros</h3>
+            <p>Iluminação com naturalidade, brilho intenso e proteção da saúde dos fios.</p>
+            <a href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Agendar</a>
+          </article>
+
+          <article class="card">
+            <h3>Unhas & Finalização</h3>
+            <p>Cuidados completos para mãos impecáveis e cabelos finalizados com sofisticação.</p>
+            <a href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Agendar</a>
+          </article>
+        </div>
       </div>
+    </section>
+
+    <section class="section section-dark" id="instagram">
+      <div class="container">
+        <h2 class="section-title">Posts do Instagram em tempo real</h2>
+        <p class="section-text">Atualização automática dos últimos conteúdos do perfil <strong>@studio_vitaly</strong>.</p>
+        <div id="instagram-feed" class="instagram-grid" aria-live="polite"></div>
+        <p id="instagram-status" class="feed-status">Carregando posts...</p>
+        <div class="feed-actions">
+          <a class="btn btn-outline" href="https://www.instagram.com/studio_vitaly/" target="_blank" rel="noopener">Ver perfil no Instagram</a>
+          <a class="btn btn-whatsapp" href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="depoimentos">
+      <div class="container">
+        <h2 class="section-title">Quem conhece, indica</h2>
+        <div class="testimonial-grid">
+          <blockquote>
+            “Atendimento impecável e resultado maravilhoso. O salão é lindo e super acolhedor.”
+            <cite>— Cliente Studio Vitaly</cite>
+          </blockquote>
+          <blockquote>
+            “Minha transformação ficou do jeito que eu sonhava. Equipe extremamente atenciosa.”
+            <cite>— Cliente Studio Vitaly</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-location" id="localizacao">
+      <div class="container location-wrap">
+        <div>
+          <h2 class="section-title">Onde estamos</h2>
+          <p class="section-text">Rua Felix Pereira da Rocha, 107 - Jardim Susana, São Paulo.</p>
+          <div class="location-cta">
+            <a class="btn btn-route" href="https://www.google.com/maps/dir/?api=1&destination=Rua+Felix+Pereira+da+Rocha+107,+Sao+Paulo" target="_blank" rel="noopener">Ver no mapa e traçar rota</a>
+            <a class="btn btn-whatsapp" href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Reservar horário</a>
+          </div>
+        </div>
+        <iframe
+          title="Mapa Studio Vitaly"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.62188315559!2d-46.71475862388003!3d-23.689476366313063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fd8d3ca7eef%3A0x1b4102fe950cad9c!2sStudio%20Vitaly!5e0!3m2!1spt-BR!2sbr!4v1770718875152!5m2!1spt-BR!2sbr"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <h2>Pronta para viver sua melhor versão?</h2>
+      <a class="btn btn-whatsapp" href="https://bit.ly/Whatsapp_Studio_Vitaly" target="_blank" rel="noopener">Agendar no WhatsApp</a>
     </div>
+  </footer>
 
-  </section>
-
-  <!-- DEPOIMENTOS -->
-  <section class="testimonials">
-    <h2>O que nossas clientes dizem</h2>
-
-    <div class="testimonial">
-      ⭐⭐⭐⭐⭐
-      <p>"Melhor experiência que já tive em um salão!"</p>
-      <span>Maria Silva</span>
-    </div>
-
-    <div class="testimonial">
-      ⭐⭐⭐⭐⭐
-      <p>"Sempre saio me sentindo linda e confiante."</p>
-      <span>Ana Costa</span>
-    </div>
-  </section>
-
-  <!-- LOCALIZAÇÃO -->
-  <section class="location">
-    <h2>Onde Estamos</h2>
-    <iframe src="https://www.google.com/maps?q=Rua+Felix+Pereira+da+Rocha+107&output=embed"></iframe>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta">
-    <h2>Você merece esse cuidado</h2>
-    <a href="https://wa.me/55SEUNUMERO" class="btn-whatsapp">Agendar agora</a>
-  </section>
-
+  <script src="app.js"></script>
 </body>
 </html>

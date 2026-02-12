@@ -1,12 +1,15 @@
 const FEED = document.getElementById('instagram-feed');
 const STATUS = document.getElementById('instagram-status');
-
-// Para atualizar em tempo real, configure um token válido do Instagram Graph API.
-// Exemplo: https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url,media_type,timestamp&access_token=SEU_TOKEN
-const INSTAGRAM_ACCESS_TOKEN = '';
+const INSTAGRAM_PROFILE_URL = 'https://www.instagram.com/studio_vitaly/';
 const POST_LIMIT = 9;
+const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+
+// Para atualização em tempo real do feed público, insira um token válido do Instagram Graph API.
+const INSTAGRAM_ACCESS_TOKEN = '';
 
 function renderFallback(message) {
+  if (!FEED || !STATUS) return;
+
   STATUS.textContent = message;
   FEED.innerHTML = '';
 
@@ -19,7 +22,7 @@ function renderFallback(message) {
   fallbackItems.forEach((image) => {
     const card = document.createElement('a');
     card.className = 'ig-item';
-    card.href = 'https://www.instagram.com/studio_vitaly/';
+    card.href = INSTAGRAM_PROFILE_URL;
     card.target = '_blank';
     card.rel = 'noopener';
     card.innerHTML = `<img src="${image}" alt="Prévia de trabalhos Studio Vitaly">`;
@@ -28,8 +31,10 @@ function renderFallback(message) {
 }
 
 async function loadInstagramPosts() {
+  if (!FEED || !STATUS) return;
+
   if (!INSTAGRAM_ACCESS_TOKEN) {
-    renderFallback('Conecte o token do Instagram para sincronização automática dos posts em tempo real.');
+    renderFallback('Conecte o token do Instagram para atualizar os depoimentos/posts em tempo real.');
     return;
   }
 
@@ -42,13 +47,14 @@ async function loadInstagramPosts() {
     const posts = data.data || [];
 
     FEED.innerHTML = '';
+
     posts.forEach((post) => {
       const media = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
       if (!media) return;
 
       const item = document.createElement('a');
       item.className = 'ig-item';
-      item.href = post.permalink;
+      item.href = post.permalink || INSTAGRAM_PROFILE_URL;
       item.target = '_blank';
       item.rel = 'noopener';
       item.innerHTML = `<img src="${media}" alt="Post do Instagram Studio Vitaly">`;
@@ -56,11 +62,46 @@ async function loadInstagramPosts() {
     });
 
     STATUS.textContent = posts.length
-      ? `Última atualização: ${new Date().toLocaleString('pt-BR')}`
-      : 'Sem posts disponíveis no momento.';
+      ? `Depoimentos atualizados em: ${new Date().toLocaleString('pt-BR')}`
+      : 'Sem posts disponíveis no momento. Veja o perfil completo no Instagram.';
   } catch (error) {
-    renderFallback('Não foi possível carregar o feed agora. Abra o Instagram para ver os posts ao vivo.');
+    renderFallback('Não foi possível atualizar o feed agora. Abra o Instagram para ver os posts ao vivo.');
   }
 }
 
+function setupExitPopup() {
+  const popup = document.getElementById('exit-popup');
+  const closeBtn = document.getElementById('exit-close');
+  if (!popup || !closeBtn) return;
+
+  let alreadyShown = false;
+
+  function showPopup() {
+    if (alreadyShown) return;
+    alreadyShown = true;
+    popup.classList.add('show');
+    popup.setAttribute('aria-hidden', 'false');
+  }
+
+  document.addEventListener('mouseout', (event) => {
+    if (event.clientY <= 0) {
+      showPopup();
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    popup.classList.remove('show');
+    popup.setAttribute('aria-hidden', 'true');
+  });
+
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+      popup.classList.remove('show');
+      popup.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
+
 loadInstagramPosts();
+setInterval(loadInstagramPosts, REFRESH_INTERVAL_MS);
+setupExitPopup();

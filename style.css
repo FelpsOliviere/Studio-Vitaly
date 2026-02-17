@@ -211,6 +211,29 @@ h1 {
   margin-top: 1.4rem;
 }
 
+.result-highlight,
+.team-highlight {
+  border: 1px solid #33303a;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #121218;
+  margin-top: 1rem;
+}
+
+.result-highlight img,
+.team-highlight img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  display: block;
+}
+
+.result-highlight figcaption,
+.team-highlight figcaption {
+  padding: 0.85rem;
+  color: #e7dcc6;
+}
+
 .service-grid,
 .instagram-grid,
 .testimonial-grid,
@@ -315,10 +338,35 @@ h1 {
   flex-wrap: wrap;
 }
 
+.elfsight-app-24d35b46-1a40-4374-b16b-b19314992a65 {
+  min-height: 320px;
+  margin-top: 0.7rem;
+}
+
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.before-after-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.before-after-item {
+  border: 1px solid #332f25;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background: #141419;
+}
+
+.before-after-item img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
 }
 
 .review-card {
@@ -397,6 +445,7 @@ iframe {
   border-radius: 999px;
   padding: 0.82rem 1.05rem;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
+  min-height: 48px;
 }
 
 .exit-popup {
@@ -450,15 +499,66 @@ iframe {
 }
 
 @media (max-width: 940px) {
-  .hero-grid {
-    padding-top: 0.6rem;
+  body {
+    padding-top: 66px;
+    padding-bottom: 88px;
   }
 
   .top-offer-bar {
-    font-size: 0.78rem;
-    padding: 0.5rem;
-    gap: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.45rem 0.5rem;
+    gap: 0.45rem;
   }
+
+  .hero-grid {
+    padding-top: 0.5rem;
+    padding-bottom: 1.2rem;
+    grid-template-columns: 1fr;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 9vw, 2.5rem);
+    margin-bottom: 0.7rem;
+  }
+
+  .subtitle,
+  .hero-cta .btn-outline,
+  .proof-list li:nth-child(n+2),
+  .volume,
+  .urgency,
+  .offer-card {
+    display: none;
+  }
+
+  .hero-cta {
+    margin: 0.9rem 0 0.7rem;
+  }
+
+  .hero-cta .btn-whatsapp {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .proof-list {
+    gap: 0;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #servicos { order: 1; }
+  #diferenciais { order: 2; }
+  #resultado-real { order: 3; }
+  #avaliacoes-google { order: 4; }
+  #localizacao { order: 5; }
+  #transformacoes { order: 6; }
+  #depoimentos { order: 7; }
+  #espaco { display: none; }
 
   .hero-grid,
   .service-grid,
@@ -468,22 +568,55 @@ iframe {
   .footer-content,
   .benefits-grid,
   .space-grid,
-  .reviews-grid {
+  .reviews-grid,
+  .before-after-grid {
     grid-template-columns: 1fr;
     display: grid;
   }
 
-  .offer-card {
-    margin-top: 0.5rem;
+  .card {
+    padding: 0.8rem;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .card p {
+    margin-bottom: 0.45rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card a {
+    font-size: 0.92rem;
+  }
+
+  .result-highlight img,
+  .team-highlight img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .before-after-item:nth-child(n+2) {
+    display: none;
   }
 
   iframe {
-    min-height: 300px;
+    min-height: 260px;
   }
 
-
-  body {
-    padding-bottom: 6.2rem;
-    padding-top: 70px;
+  .mobile-whatsapp {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    width: min(94%, 430px);
+    border-radius: 14px;
+    text-align: center;
+    padding: 0.92rem 1rem;
+    font-size: 1rem;
   }
 }

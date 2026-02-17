@@ -338,6 +338,11 @@ h1 {
   flex-wrap: wrap;
 }
 
+.elfsight-app-24d35b46-1a40-4374-b16b-b19314992a65 {
+  min-height: 320px;
+  margin-top: 0.7rem;
+}
+
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -552,7 +557,7 @@ iframe {
   #avaliacoes-google { order: 4; }
   #localizacao { order: 5; }
   #transformacoes { order: 6; }
-  #depoimentos { order: 7; display: none; }
+  #depoimentos { order: 7; }
   #espaco { display: none; }
 
   .hero-grid,

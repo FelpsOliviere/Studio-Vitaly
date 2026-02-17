@@ -218,12 +218,13 @@ h1 {
   overflow: hidden;
   background-color: #121218;
   margin-top: 1rem;
+  aspect-ratio: 9 / 16; /* AQUI */
 }
 
 .result-highlight video,
 .team-highlight video {
   width: 100%;
-  aspect-ratio: 9 / 16;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -593,11 +594,6 @@ iframe {
 
   .card a {
     font-size: 0.92rem;
-  }
-
-  .result-highlight img,
-  .team-highlight img {
-    aspect-ratio: 9 / 16;
   }
 
   .before-after-item:nth-child(n+2) {

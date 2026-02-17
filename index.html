@@ -205,9 +205,8 @@
       <div class="container">
         <h2 class="section-title">Depoimentos em tempo real pelo Instagram</h2>
         <p class="section-text">Veja as publicações mais recentes do perfil oficial <strong>@studio_vitaly</strong> atualizadas automaticamente.</p>
-        <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-24d35b46-1a40-4374-b16b-b19314992a65" data-elfsight-app-lazy></div>
+        <!-- Elfsight Instagram Feed | carregamento sob demanda para melhor desempenho -->
+        <div class="elfsight-app-24d35b46-1a40-4374-b16b-b19314992a65" data-elfsight-app-lazy data-elfsight-src="https://elfsightcdn.com/platform.js"></div>
         <div class="feed-actions">
           <a class="btn btn-outline" href="https://www.instagram.com/studio_vitaly/" target="_blank" rel="noopener">Abrir Instagram do salão</a>
           <a class="btn btn-whatsapp" href="https://api.whatsapp.com/send?phone=5511960573066&text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Studio%20Vitaly%20e%20quero%20aproveitar%20os%2010%25%20da%20primeira%20visita%20%F0%9F%98%8A" target="_blank" rel="noopener">Falar com a especialista agora</a>
@@ -228,7 +227,7 @@
         </div>
         <iframe
           title="Mapa Studio Vitaly"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.62188315559!2d-46.71475862388003!3d-23.689476366313063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fd8d3ca7eef%3A0x1b4102fe950cad9c!2sStudio%20Vitaly!5e0!3m2!1spt-BR!2sbr!4v1770718875152!5m2!1spt-BR!2sbr"
+          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.62188315559!2d-46.71475862388003!3d-23.689476366313063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce4fd8d3ca7eef%3A0x1b4102fe950cad9c!2sStudio%20Vitaly!5e0!3m2!1spt-BR!2sbr!4v1770718875152!5m2!1spt-BR!2sbr"
           width="600"
           height="450"
           style="border:0;"
@@ -260,6 +259,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

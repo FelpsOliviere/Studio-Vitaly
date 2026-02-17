@@ -1,11 +1,14 @@
-# Prévia do site
+# Prévia local (atualizada)
 
-Para visualizar o projeto localmente:
+Use este comando na raiz do projeto para abrir uma prévia rápida:
 
 ```bash
 python3 -m http.server 4173
 ```
 
-Depois acesse `http://127.0.0.1:4173` no navegador.
+Depois, acesse no navegador:
 
-Prévia gerada automaticamente pelo agente em 2026-02-17.
+- `http://127.0.0.1:4173`
+- `http://localhost:4173`
+
+Para encerrar o servidor, pressione `Ctrl + C`.

@@ -216,14 +216,14 @@ h1 {
   border: 1px solid #33303a;
   border-radius: 1rem;
   overflow: hidden;
-  background: #121218;
+  background-color: #121218;
   margin-top: 1rem;
 }
 
-.result-highlight img,
-.team-highlight img {
+.result-highlight video,
+.team-highlight video {
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
   display: block;
 }
@@ -597,7 +597,7 @@ iframe {
 
   .result-highlight img,
   .team-highlight img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 9 / 16;
   }
 
   .before-after-item:nth-child(n+2) {

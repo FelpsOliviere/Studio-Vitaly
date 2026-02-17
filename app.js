@@ -1,74 +1,3 @@
-const FEED = document.getElementById('instagram-feed');
-const STATUS = document.getElementById('instagram-status');
-const INSTAGRAM_PROFILE_URL = 'https://www.instagram.com/studio_vitaly/';
-const POST_LIMIT = 9;
-const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
-
-// Para atualização em tempo real do feed público, insira um token válido do Instagram Graph API.
-const INSTAGRAM_ACCESS_TOKEN = '';
-
-function renderFallback(message) {
-  if (!FEED || !STATUS) return;
-
-  STATUS.textContent = message;
-  FEED.innerHTML = '';
-
-  const fallbackItems = [
-    'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80'
-  ];
-
-  fallbackItems.forEach((image) => {
-    const card = document.createElement('a');
-    card.className = 'ig-item';
-    card.href = INSTAGRAM_PROFILE_URL;
-    card.target = '_blank';
-    card.rel = 'noopener';
-    card.innerHTML = `<img src="${image}" alt="Prévia de trabalhos Studio Vitaly">`;
-    FEED.appendChild(card);
-  });
-}
-
-async function loadInstagramPosts() {
-  if (!FEED || !STATUS) return;
-
-  if (!INSTAGRAM_ACCESS_TOKEN) {
-    renderFallback('Conecte o token do Instagram para atualizar os depoimentos/posts em tempo real.');
-    return;
-  }
-
-  try {
-    const endpoint = `https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url,media_type,timestamp&limit=${POST_LIMIT}&access_token=${INSTAGRAM_ACCESS_TOKEN}`;
-    const response = await fetch(endpoint);
-    if (!response.ok) throw new Error('Falha ao carregar feed');
-
-    const data = await response.json();
-    const posts = data.data || [];
-
-    FEED.innerHTML = '';
-
-    posts.forEach((post) => {
-      const media = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
-      if (!media) return;
-
-      const item = document.createElement('a');
-      item.className = 'ig-item';
-      item.href = post.permalink || INSTAGRAM_PROFILE_URL;
-      item.target = '_blank';
-      item.rel = 'noopener';
-      item.innerHTML = `<img src="${media}" alt="Post do Instagram Studio Vitaly">`;
-      FEED.appendChild(item);
-    });
-
-    STATUS.textContent = posts.length
-      ? `Depoimentos atualizados em: ${new Date().toLocaleString('pt-BR')}`
-      : 'Sem posts disponíveis no momento. Veja o perfil completo no Instagram.';
-  } catch (error) {
-    renderFallback('Não foi possível atualizar o feed agora. Abra o Instagram para ver os posts ao vivo.');
-  }
-}
-
 function setupExitPopup() {
   const popup = document.getElementById('exit-popup');
   const closeBtn = document.getElementById('exit-close');
@@ -102,6 +31,69 @@ function setupExitPopup() {
   });
 }
 
-loadInstagramPosts();
-setInterval(loadInstagramPosts, REFRESH_INTERVAL_MS);
+function setupLazyMap() {
+  const mapFrame = document.querySelector('#localizacao iframe[data-src]');
+  if (!mapFrame) return;
+
+  const loadMap = () => {
+    if (!mapFrame.src) {
+      mapFrame.src = mapFrame.dataset.src;
+    }
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    loadMap();
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        loadMap();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '300px 0px' });
+
+  observer.observe(mapFrame);
+}
+
+function setupLazyElfsight() {
+  const elfsightContainer = document.querySelector('[data-elfsight-app-lazy]');
+  if (!elfsightContainer) return;
+
+  const scriptUrl = elfsightContainer.dataset.elfsightSrc;
+  if (!scriptUrl) return;
+
+  let scriptLoaded = false;
+
+  const loadElfsightScript = () => {
+    if (scriptLoaded) return;
+    scriptLoaded = true;
+
+    const script = document.createElement('script');
+    script.src = scriptUrl;
+    script.async = true;
+    document.body.appendChild(script);
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    loadElfsightScript();
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        loadElfsightScript();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '400px 0px' });
+
+  observer.observe(elfsightContainer);
+}
+
 setupExitPopup();
+setupLazyMap();
+setupLazyElfsight();

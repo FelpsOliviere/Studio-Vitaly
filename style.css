@@ -607,7 +607,8 @@ iframe {
   .hero-cta .btn-whatsapp {
     width: 100%;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.04rem;
+    padding: 0.95rem 1.15rem;
   }
 
   .hero-cta-note {
@@ -625,11 +626,11 @@ iframe {
   }
 
   #servicos { order: 1; }
-  #diferenciais { order: 2; }
-  #resultado-real { order: 3; }
-  #avaliacoes-google { order: 4; }
-  #localizacao { order: 5; }
-  #transformacoes { order: 6; }
+  #avaliacoes-google { order: 2; }
+  #transformacoes { order: 3; }
+  #diferenciais { order: 4; }
+  #resultado-real { order: 5; }
+  #localizacao { order: 6; }
   #depoimentos { order: 7; }
   #dev-cta { order: 8; }
   #espaco { display: none; }
@@ -652,17 +653,40 @@ iframe {
     padding: 0.8rem;
   }
 
+  .section-cta-center .btn,
+  .feed-actions .btn,
+  .location-cta .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.95rem 1.1rem;
+  }
+
   .dev-cta {
     padding: 2.4rem 0;
   }
 
   .dev-cta-card {
     border-radius: 0.9rem;
-    padding: 1.2rem 1rem;
+    padding: 1rem 0.95rem;
+    background: #101015;
+    border-color: #211f28;
+  }
+
+  .dev-cta-title {
+    font-size: 1.2rem;
+    opacity: 0.9;
   }
 
   .dev-cta-text {
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  .dev-cta-btn {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
   }
 
   .card h3 {
@@ -700,11 +724,12 @@ iframe {
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    bottom: calc(10px + env(safe-area-inset-bottom));
-    width: min(94%, 430px);
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    width: min(96%, 440px);
     border-radius: 14px;
     text-align: center;
-    padding: 0.92rem 1rem;
-    font-size: 1rem;
+    padding: 1rem 1rem;
+    font-size: 1.02rem;
+    font-weight: 800;
   }
 }

@@ -132,12 +132,6 @@ h1 {
   color: #231a0a;
 }
 
-.hero-cta-note {
-  color: #d7ccb8;
-  font-size: 0.92rem;
-  margin-top: -0.35rem;
-}
-
 .proof-list {
   list-style: none;
   display: grid;
@@ -555,11 +549,6 @@ iframe {
     width: 100%;
     text-align: center;
     font-size: 1rem;
-  }
-
-  .hero-cta-note {
-    font-size: 0.82rem;
-    margin-top: -0.2rem;
   }
 
   .proof-list {

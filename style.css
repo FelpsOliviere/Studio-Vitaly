@@ -607,8 +607,8 @@ iframe {
   .hero-cta .btn-whatsapp {
     width: 100%;
     text-align: center;
-    font-size: 1.04rem;
-    padding: 0.95rem 1.15rem;
+    font-size: 1.05rem;
+    padding: 1rem 1.6rem;
   }
 
   .hero-cta-note {
@@ -659,7 +659,7 @@ iframe {
     width: 100%;
     justify-content: center;
     text-align: center;
-    padding: 0.95rem 1.1rem;
+    padding: 1rem 1.6rem;
   }
 
   .dev-cta {
@@ -704,6 +704,23 @@ iframe {
 
   .card a {
     font-size: 0.92rem;
+  }
+
+  .reviews-grid .review-card:nth-child(n+3) {
+    display: none;
+  }
+
+  .benefits-grid {
+    gap: 0.65rem;
+  }
+
+  .benefits-grid .benefit-card:nth-child(n+4) {
+    display: none;
+  }
+
+  .benefit-card {
+    padding: 0.85rem;
+    font-size: 0.95rem;
   }
 
   .before-after-item:nth-child(n+2) {

@@ -132,6 +132,12 @@ h1 {
   color: #231a0a;
 }
 
+.hero-cta-note {
+  color: #d7ccb8;
+  font-size: 0.92rem;
+  margin-top: -0.35rem;
+}
+
 .proof-list {
   list-style: none;
   display: grid;
@@ -217,16 +223,24 @@ h1 {
   border-radius: 1rem;
   overflow: hidden;
   background-color: #121218;
-  margin-top: 1rem;
-  aspect-ratio: 9 / 16; /* AQUI */
+  margin: 1rem auto 0;
+  max-width: min(100%, 760px);
 }
 
 .result-highlight video,
 .team-highlight video {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   display: block;
+}
+
+.result-highlight video {
+  object-position: center 24%;
+}
+
+.team-highlight video {
+  object-position: center 30%;
 }
 
 .result-highlight figcaption,
@@ -415,6 +429,59 @@ iframe {
   background: #101017;
 }
 
+.dev-cta {
+  margin-top: 1.2rem;
+  padding: 3.4rem 0;
+}
+
+.dev-cta-card {
+  width: min(860px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(180deg, #101016, #0d0d12);
+  border: 1px solid #26232c;
+  border-radius: 1rem;
+  padding: clamp(1.3rem, 2.8vw, 2.1rem);
+}
+
+.dev-cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.55rem;
+}
+
+.dev-cta-text {
+  color: #cec4b2;
+  max-width: 640px;
+  margin: 0 auto 1rem;
+}
+
+.dev-cta-btn {
+  background: #1f1c26;
+  color: #ece6d9;
+  border: 1px solid #3a3544;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.dev-cta-btn:hover {
+  background: #292432;
+  border-color: #5a5366;
+  transform: translateY(-1px);
+}
+
+.dev-cta-credit {
+  display: block;
+  margin-top: 0.85rem;
+  color: rgba(235, 224, 204, 0.6);
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+
+.dev-cta-credit:hover {
+  color: rgba(235, 224, 204, 0.82);
+}
+
+
 .footer {
   padding: 2rem 0 2.5rem;
   border-top: 1px solid var(--line);
@@ -540,7 +607,13 @@ iframe {
   .hero-cta .btn-whatsapp {
     width: 100%;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    padding: 1rem 1.6rem;
+  }
+
+  .hero-cta-note {
+    font-size: 0.82rem;
+    margin-top: -0.2rem;
   }
 
   .proof-list {
@@ -553,12 +626,13 @@ iframe {
   }
 
   #servicos { order: 1; }
-  #diferenciais { order: 2; }
-  #resultado-real { order: 3; }
-  #avaliacoes-google { order: 4; }
-  #localizacao { order: 5; }
-  #transformacoes { order: 6; }
+  #avaliacoes-google { order: 2; }
+  #transformacoes { order: 3; }
+  #diferenciais { order: 4; }
+  #resultado-real { order: 5; }
+  #localizacao { order: 6; }
   #depoimentos { order: 7; }
+  #dev-cta { order: 8; }
   #espaco { display: none; }
 
   .hero-grid,
@@ -579,6 +653,42 @@ iframe {
     padding: 0.8rem;
   }
 
+  .section-cta-center .btn,
+  .feed-actions .btn,
+  .location-cta .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 1.6rem;
+  }
+
+  .dev-cta {
+    padding: 2.4rem 0;
+  }
+
+  .dev-cta-card {
+    border-radius: 0.9rem;
+    padding: 1rem 0.95rem;
+    background: #101015;
+    border-color: #211f28;
+  }
+
+  .dev-cta-title {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .dev-cta-text {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  .dev-cta-btn {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+
   .card h3 {
     font-size: 1.3rem;
     margin-bottom: 0.25rem;
@@ -596,8 +706,31 @@ iframe {
     font-size: 0.92rem;
   }
 
+  .reviews-grid .review-card:nth-child(n+3) {
+    display: none;
+  }
+
+  .benefits-grid {
+    gap: 0.65rem;
+  }
+
+  .benefits-grid .benefit-card:nth-child(n+4) {
+    display: none;
+  }
+
+  .benefit-card {
+    padding: 0.85rem;
+    font-size: 0.95rem;
+  }
+
   .before-after-item:nth-child(n+2) {
     display: none;
+  }
+
+  .result-highlight video,
+  .team-highlight video {
+    aspect-ratio: 9 / 16;
+    max-height: 72vh;
   }
 
   iframe {
@@ -608,11 +741,12 @@ iframe {
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    bottom: calc(10px + env(safe-area-inset-bottom));
-    width: min(94%, 430px);
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    width: min(96%, 440px);
     border-radius: 14px;
     text-align: center;
-    padding: 0.92rem 1rem;
-    font-size: 1rem;
+    padding: 1rem 1rem;
+    font-size: 1.02rem;
+    font-weight: 800;
   }
 }
